@@ -15,7 +15,7 @@ function Voluntarios () {
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState([]);
 
-    useEffect(() => {
+    useEffect((page) => {
         setPagination(calculateRange(all_voluntarios, 5));
         setVoluntarios(sliceData(all_voluntarios, page, 5));
     }, []);
