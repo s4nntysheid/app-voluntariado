@@ -3,7 +3,7 @@ import DashboardHeader from "../../components/DashboardHeader";
 
 import all_voluntarios from "../../constants/voluntarios";
 import { calculateRange, sliceData } from "../../utils/table-pagination";
-import SheetValues from "../../utils/get-values";
+//import SheetValues from "../../utils/get-values";
 
 import "../styles.css";
 import DoneIcon from "../../assets/icons/done.svg";
@@ -42,8 +42,6 @@ function Voluntarios() {
     setVoluntarios(sliceData(all_voluntarios, new_page, 5));
   };
 
-  //SheetValues()
-
   return (
     <div className="dashboard-content">
       <DashboardHeader />
@@ -70,6 +68,7 @@ function Voluntarios() {
           </thead>
 
           {voluntarios.length !== 0 ? (
+            
             <tbody>
               {voluntarios.map((voluntarios, index) => (
                 <tr key={index}>

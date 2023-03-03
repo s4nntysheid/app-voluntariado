@@ -8,11 +8,14 @@ import "./styles.css";
 //import LogoutIcon from "../../assets/icons/logout.svg";
 
 function SideBar({ menu }) {
+  
   const location = useLocation();
-
+  
   const [active, setActive] = useState(1);
-
-  useEffect((menu) => {
+  
+  useEffect(() => {
+    
+    console.log('menu', menu)
     menu.forEach((element) => {
       if (location.pathname === element.path) {
         setActive(element.id);
