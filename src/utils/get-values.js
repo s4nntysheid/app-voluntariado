@@ -1,41 +1,55 @@
-//import path from "path";
-//import process from "process";
-//import { google } from "googleapis";
-//import { authenticate } from "@google-cloud/local-auth";
+import React, { Component } from "react";
+import ReactGoogleSheets from "react-google-sheets";
 
-// If modifying these scopes, delete token.json.
-//const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-
-//const CREDENTIALS_PATH = path.join(process.cwd(), "credentials.json");
-
-function SheetValues() {
-  function logData() {
-    
+class DataComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sheetLoaded: false,
+    };
   }
-  /*async function authorize() {
-    await authenticate({
-      scopes: SCOPES,
-      keyfilePath: CREDENTIALS_PATH,
-    });
+  render() {
+    return (
+      <ReactGoogleSheets
+        clientId={
+          "834868529976-p5nm10rmht8ta4idrgompshi6q2i16bg.apps.googleusercontent.com"
+        }
+        apiKey={"AIzaSyBwGhu2BIuD9QVClN53W6wCO9-0qevQLyc"}
+        spreadsheetId={"1TT6C6lmwNeznUGes82txf2k91eet7pjVj2TldPEyeSU"}
+        afterLoading={() => this.setState({ sheetLoaded: true })}
+      >
+        {this.state.sheetLoaded ? (
+          <div>
+            {/* Access Data */}
+            {console.log(
+              "Your sheet data : ",
+              this.props.getSheetsData("GERAL")
+            )}
+            {/* Update Data */}
+            <button
+              onClick={() => {
+                /* this.props.updateCell(
+                'sheet02', // sheetName
+                'E', // column
+                13, // row
+                'Apple', // value
+                null, // successCallback
+                (error) => {
+                  console.log('error', error)
+                } // errorCallback
+              ); */
+                this.props.getSheetsData("GERAL");
+              }}
+            >
+              update cell!
+            </button>
+          </div>
+        ) : (
+          "loading..."
+        )}
+      </ReactGoogleSheets>
+    );
   }
-  async function listMajors(auth) {
-    const sheets = google.sheets({ version: "v4", auth });
-    for (let row = 3; row < 1000; row++) {
-      const res = await sheets.spreadsheets.values.get({
-        spreadsheetId: "1J78RpgWAP1hPLqgIy_30kQr-5yXLq4fM",
-        range: `GERAL!A${row}:K${row}`,
-      });
-      const rows = res.data.values;
-      if (!rows || rows.length === 0) {
-        console.log("No data found.");
-        break;
-      }
-
-      return rows;
-    }
-  } */
-
-  logData()
 }
 
-export default SheetValues;
+export default ReactGoogleSheets.connect(DataComponent);

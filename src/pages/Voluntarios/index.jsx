@@ -3,7 +3,7 @@ import DashboardHeader from "../../components/DashboardHeader";
 
 import all_voluntarios from "../../constants/voluntarios";
 import { calculateRange, sliceData } from "../../utils/table-pagination";
-//import SheetValues from "../../utils/get-values";
+import SheetValues from "../../utils/get-values";
 
 import "../styles.css";
 import DoneIcon from "../../assets/icons/done.svg";
@@ -45,6 +45,7 @@ function Voluntarios() {
   return (
     <div className="dashboard-content">
       <DashboardHeader />
+      <SheetValues />
       <div className="dashboard-content-container">
         <div className="dashboard-content-header">
           <h2>Lista de Voluntários</h2>
@@ -87,25 +88,6 @@ function Voluntarios() {
                   </td>
                   <td>
                     <div>
-                      {voluntarios.status === "Paid" ? (
-                        <img
-                          src={DoneIcon}
-                          alt="paid-icon"
-                          className="dashboard-content-icon"
-                        />
-                      ) : voluntarios.status === "Canceled" ? (
-                        <img
-                          src={CancelIcon}
-                          alt="canceled-icon"
-                          className="dashboard-content-icon"
-                        />
-                      ) : voluntarios.status === "Refunded" ? (
-                        <img
-                          src={RefundedIcon}
-                          alt="refunded-icon"
-                          className="dashboard-content-icon"
-                        />
-                      ) : null}
                       <span>{voluntarios.status}</span>
                     </div>
                   </td>
