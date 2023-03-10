@@ -14,14 +14,12 @@ function SideBar({ menu }) {
   const [active, setActive] = useState(1);
   
   useEffect(() => {
-    
-    console.log('menu', menu)
     menu.forEach((element) => {
       if (location.pathname === element.path) {
         setActive(element.id);
       }
     });
-  }, [location.pathname]);
+  }, [menu, location.pathname]);
 
   const __navigate = (id) => {
     setActive(id);

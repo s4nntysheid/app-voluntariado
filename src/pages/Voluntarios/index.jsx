@@ -3,12 +3,12 @@ import DashboardHeader from "../../components/DashboardHeader";
 
 import all_voluntarios from "../../constants/voluntarios";
 import { calculateRange, sliceData } from "../../utils/table-pagination";
-import SheetValues from "../../utils/get-values";
 
 import "../styles.css";
-import DoneIcon from "../../assets/icons/done.svg";
+/* import DoneIcon from "../../assets/icons/done.svg";
 import CancelIcon from "../../assets/icons/cancel.svg";
-import RefundedIcon from "../../assets/icons/refunded.svg";
+import RefundedIcon from "../../assets/icons/refunded.svg"; */
+
 
 function Voluntarios() {
   const [search, setSearch] = useState("");
@@ -16,10 +16,12 @@ function Voluntarios() {
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState([]);
 
-  useEffect((page) => {
-    setPagination(calculateRange(all_voluntarios, 5));
-    setVoluntarios(sliceData(all_voluntarios, page, 5));
-  }, []);
+  const voluntPages = 50
+
+  useEffect(() => {
+    setPagination(calculateRange(all_voluntarios, voluntPages))
+    setVoluntarios(sliceData(all_voluntarios, page, voluntPages))
+  }, [page]);
 
   // Search
   const __handleSearch = (event) => {
@@ -27,8 +29,8 @@ function Voluntarios() {
     if (event.target.value !== "") {
       let search_results = voluntarios.filter(
         (item) =>
-          item.first_name.toLowerCase().includes(search.toLowerCase()) ||
-          item.last_name.toLowerCase().includes(search.toLowerCase())
+          item.nome.toLowerCase().includes(search.toLowerCase()) ||
+          item.email.toLowerCase().includes(search.toLowerCase())
       );
       setVoluntarios(search_results);
     } else {
@@ -39,13 +41,13 @@ function Voluntarios() {
   // Change Page
   const __handleChangePage = (new_page) => {
     setPage(new_page);
-    setVoluntarios(sliceData(all_voluntarios, new_page, 5));
+    setVoluntarios(sliceData(all_voluntarios, new_page, voluntPages));
   };
 
+  
   return (
     <div className="dashboard-content">
       <DashboardHeader />
-      <SheetValues />
       <div className="dashboard-content-container">
         <div className="dashboard-content-header">
           <h2>Lista de Voluntários</h2>
@@ -64,8 +66,14 @@ function Voluntarios() {
           <thead>
             <th>ID</th>
             <th>NOME</th>
-            <th>DATE</th>
-            <th>STATUS</th>
+            <th>NASCIMENTO</th>
+            <th>IDADE</th>
+            <th>SEXO</th>
+            <th>NÚMERO</th>
+            <th>E-MAIL</th>
+            <th>B</th>
+            <th>D</th>
+            <th>CdO</th>
           </thead>
 
           {voluntarios.length !== 0 ? (
@@ -79,16 +87,46 @@ function Voluntarios() {
                   <td>
                     <div>
                       <span>
-                        {voluntarios.first_name} {voluntarios.last_name}
+                        {voluntarios.nome}
                       </span>
                     </div>
                   </td>
                   <td>
-                    <span>{voluntarios.date}</span>
+                    <span>{voluntarios.nascimento}</span>
                   </td>
                   <td>
                     <div>
-                      <span>{voluntarios.status}</span>
+                      <span>{voluntarios.idade}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.sexo}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.numero}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.email}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.b}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.d}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <span>{voluntarios.cdo}</span>
                     </div>
                   </td>
                 </tr>
