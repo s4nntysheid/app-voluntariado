@@ -27,14 +27,21 @@ function Voluntarios() {
   const __handleSearch = (event) => {
     setSearch(event.target.value);
     if (event.target.value !== "") {
-      let search_results = voluntarios.filter(
-        (item) =>
-          item.nome.toLowerCase().includes(search.toLowerCase()) ||
-          item.email.toLowerCase().includes(search.toLowerCase())
-      );
-      setVoluntarios(search_results);
+      let search_results = all_voluntarios.filter(
+        (item) => {
+          let vol = item ? item : undefined
+          let volFirstName = vol ? vol.nome.split(" ")[0] : undefined
+          let volSecName = vol ? vol.nome.split(" ")[vol.nome.split(" ").length -1] : undefined
+          let searchedVol = volFirstName.toLowerCase().includes(search.toLowerCase()) || volSecName.toLowerCase().includes(search.toLowerCase())
+          return searchedVol
+        }
+        );
+        setPagination(calculateRange(search_results, voluntPages))
+        setVoluntarios(sliceData(search_results, page, voluntPages))
+
     } else {
-      __handleChangePage(1);
+    setPagination(calculateRange(all_voluntarios, voluntPages))
+    __handleChangePage(1);
     }
   };
 
