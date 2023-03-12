@@ -75,3 +75,21 @@
     font-size: 20pt;
     padding: 1.5em;
 }
+.dashbord-header-btn {
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-transform: uppercase;
+    border: 1px solid #015c92;
+    background-color: #015c92;
+  }
+  .dashbord-header-btn:hover {
+    color: #015c92;
+    border: 1px solid #015c92;
+    background-color: #f0f2f5;
+  }
