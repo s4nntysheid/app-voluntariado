@@ -13,14 +13,9 @@ const sidebar_menu = [
         icon: UserIcon,
         path: '/voluntarios',
         title: 'Voluntários',
-    }/* ,
-    {
-        id: 3,
-        icon: UserIcon,
-        path: '/base',
-        title: 'base',
-    },
-    {
+    }
+    /* 
+    ,{
         id: 4,
         icon: UserIcon,
         path: '/base',

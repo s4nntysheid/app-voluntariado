@@ -6,6 +6,7 @@ import sidebar_menu from './constants/sidebar-menu';
 
 import './App.css';
 import Voluntarios from './pages/Voluntarios';
+import NewVoluntario from './pages/NewVoluntario';
 
 function App () {
   return(
@@ -18,6 +19,7 @@ function App () {
                   <Route path="*" element={<div></div>} />
                   <Route exact path="/" element={<div></div>} />
                   <Route exact path="/voluntarios" element={< Voluntarios/>} />
+                  <Route exact path="/newvoluntario" element={< NewVoluntario/>} />
                   <Route exact path="/locations" element={<div></div>} />
                   <Route exact path="/profile" element={<div></div>} />
               </Routes>
