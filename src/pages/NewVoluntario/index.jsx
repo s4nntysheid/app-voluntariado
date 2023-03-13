@@ -2,10 +2,6 @@ import React from "react";
 import DashboardHeader from "../../components/DashboardHeader";
 
 import "../styles.css";
-/* import DoneIcon from "../../assets/icons/done.svg";
-import CancelIcon from "../../assets/icons/cancel.svg";
-import RefundedIcon from "../../assets/icons/refunded.svg"; */
-
 
 function NewVoluntario() {
 
