@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DashboardHeader from "../../components/DashboardHeader";
+import SideBar from "../../components/Sidebar";
+import sidebar_menu from "../../constants/sidebar-menu";
 
 import all_voluntarios from "../../constants/voluntarios";
 import { calculateRange, sliceData } from "../../utils/table-pagination";
@@ -31,17 +33,17 @@ function Voluntarios() {
         (item) => {
           let vol = item ? item : undefined
           let volFirstName = vol ? vol.nome.split(" ")[0] : undefined
-          let volSecName = vol ? vol.nome.split(" ")[vol.nome.split(" ").length -1] : undefined
+          let volSecName = vol ? vol.nome.split(" ")[vol.nome.split(" ").length - 1] : undefined
           let searchedVol = volFirstName.toLowerCase().includes(search.toLowerCase()) || volSecName.toLowerCase().includes(search.toLowerCase())
           return searchedVol
         }
-        );
-        setPagination(calculateRange(search_results, voluntPages))
-        setVoluntarios(sliceData(search_results, page, voluntPages))
+      );
+      setPagination(calculateRange(search_results, voluntPages))
+      setVoluntarios(sliceData(search_results, page, voluntPages))
 
     } else {
-    setPagination(calculateRange(all_voluntarios, voluntPages))
-    __handleChangePage(1);
+      setPagination(calculateRange(all_voluntarios, voluntPages))
+      __handleChangePage(1);
     }
   };
 
@@ -51,7 +53,7 @@ function Voluntarios() {
     setVoluntarios(sliceData(all_voluntarios, new_page, voluntPages));
   };
 
-  
+
   return (
     <div className="dashboard-content">
       <DashboardHeader />
@@ -84,7 +86,7 @@ function Voluntarios() {
           </thead>
 
           {voluntarios.length !== 0 ? (
-            
+
             <tbody>
               {voluntarios.map((voluntarios, index) => (
                 <tr key={index}>

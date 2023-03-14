@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.down-content {
+  height: auto;
+  width: auto;
+  display: flex;
+  margin-right: 0px;
+  align-items: flex-start;
+
+}
+
+div .bottom-bar-content {
+  height: auto;
+  width: auto;
+  display: flex;
+  gap: 10px;
+
+
+}
+
+.sino,
+.exit {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.bem-vindo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+}
